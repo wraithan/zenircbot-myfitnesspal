@@ -21,21 +21,26 @@ filtered.on('data', function(msg){
     scrapeit(fullUrl, function(err, o, dom) {
       if (!err) {
         var tags = ['Today', 'Goal', 'Remaining']
+          , response = ''
         o('tr.total').forEach(function(tr, idx) {
           var count = 0
+          response += tags[idx] + ': '
           tr.children.forEach(function(td) {
             if (count < 2) {
               if (td.type === 'tag' && td.name === 'td') {
                 if (count === 1) {
-                  zen.send_privmsg(msg.data.channel,
-                                   tags[idx] + ': ' + td.children[0].data.trim())
-                  console.log(td)
+                  response += td.children[0].data.trim()
                 }
                 count++
               }
             }
           })
+          if (idx < 2) {
+            response += ' | '
+          }
         })
+        zen.send_privmsg(msg.data.channel, response)
+        console.log(response)
       }
     })
   }
