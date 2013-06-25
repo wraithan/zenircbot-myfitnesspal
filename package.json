@@ -1,0 +1,21 @@
+{
+  "author": "Wraithan (http://wraithan.net)",
+  "name": "zenircbot-myfitnesspal",
+  "description": "Gives ZenIRCBot commands for MyFitnessPal.",
+  "version": "0.1.0",
+  "homepage": "http://github.com/wraithan/zenircbot-myfitnesspal",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/wraithan/zenircbot-myfitnesspal.git"
+  },
+  "dependencies": {
+    "zenircbot-api": "2.3.1",
+    "scrapeit": "0.0.2"
+  },
+  "engines": {
+    "node": "*"
+  },
+  "scripts": {
+    "start": "node ./myfitnesspal.js"
+  }
+}
